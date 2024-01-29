@@ -19,6 +19,6 @@ jobs:
       - name: Create Post File
         env:
             POST_CONTENT: ${{ github.event.client_payload.post_content }}
-        run: echo "$POST_CONTENT" > source/_posts/$(date +%FT%T)
+        run: echo "$POST_CONTENT" > source/_posts/$(date +%FT%T).md
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
