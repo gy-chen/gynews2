@@ -5,8 +5,10 @@ on:
     types: [create_post_pr]
 
 jobs:
-  build:
+  create-post-pr:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -19,5 +21,3 @@ jobs:
         run: echo "$POST_CONTENT" > source/_posts/$(date +%FT%T)
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.PAT }}
