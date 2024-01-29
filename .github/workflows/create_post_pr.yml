@@ -4,12 +4,13 @@ on:
   repository_dispatch:
     types: [create_post_pr]
 
+permissions:
+  pull-requests: write
+  contents: write
+
 jobs:
   create-post-pr:
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
-      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
@@ -22,5 +23,3 @@ jobs:
         run: echo "$POST_CONTENT" > source/_posts/$(date +%FT%T)
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
