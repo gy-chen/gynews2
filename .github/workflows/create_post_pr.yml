@@ -4,13 +4,12 @@ on:
   repository_dispatch:
     types: [create_post_pr]
 
-permissions:
-  pull-requests: write
-  contents: write
-
 jobs:
   create-post-pr:
     runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: write
     steps:
       - uses: actions/checkout@v4
         with:
