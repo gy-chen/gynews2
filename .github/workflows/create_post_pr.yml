@@ -1,0 +1,21 @@
+name: Create Post PR
+
+on:
+  repository_dispatch:
+    types: [create_post_pr]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          # If your repository depends on submodule, please see: https://github.com/actions/checkout
+          submodules: recursive
+      - name: Create Post File
+        env:
+            POST_CONTENT: ${{ github.event.client_payload.postContent }}
+        run: echo "$POST_CONTENT" > source/_posts/$(date +%FT%T)
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
