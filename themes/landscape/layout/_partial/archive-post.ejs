@@ -2,6 +2,9 @@
   <div class="archive-article-inner">
     <header class="archive-article-header">
       <%- partial('post/date', {class_name: 'archive-article-date', date_format: 'MMM D'}) %>
+      <div class="archive-article-category-wrapper">
+        <%- partial('post/category')%>
+      </div>
       <%- partial('post/title', {class_name: 'archive-article-title'}) %>
     </header>
   </div>

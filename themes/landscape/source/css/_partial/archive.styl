@@ -37,6 +37,17 @@
 .archive-article-footer
   margin-top: 1em
 
+.archive-article-header
+  display: grid
+  grid-template-areas: "a b" "c c"
+  grid-template-columns: auto 1fr
+
+.archive-article-category-wrapper
+  font-size: .85em
+
+.archive-article-category-wrapper .article-category:before
+  content: unset
+
 .archive-article-date
   color: color-grey
   text-decoration: none
